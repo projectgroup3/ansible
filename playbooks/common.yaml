@@ -1,45 +1,44 @@
 ---
-- name: install initial packages on all boxes
- hosts: all
- remote_user: ansible
- become: yes
+  - name: install initial packages on all boxes
+    hosts: webservers
+    remote_user: ansible
+    become: yes
 
- tasks:
- - name: install all initial packages
-   yum:
-     name: {{item}}
-     state: latest
-     with_items:
-     - man
-     - man-pages
-     - mlocate
-     - bind-utils
- - name: install ntp packages
-   yum:
-     name: ntp
-     state: latest
- - name: configure ntp
-   template:
-     src: /ansible/templates/ntpd.conf.j2
-     dest: /etc/ntp.conf
-   notify: restart ntpd
- - name: start ntp
-   service:
-     name: ntpd
-     state: started
- handlers:
-   - name: restart ntpd
-     service:
-       name: ntpd
-       state: restarted
-  - name: run this command 
+    tasks:
+  - name: install all initial packages
     yum:
-      name: /bin/echo " nameserver ziyotek.local \n search domain ziyotek.local \n nameserver 192.168.1.151 "
-  - name: 
+      name: {{item}}
+      state: latest
+      with_items:
+      - man
+      - man-pages
+      - mlocate
+      - bind-utils
+  - name: install ntp packages
+    yum:
+      name: ntp
+      state: latest
+  - name: configure ntp
     template:
-      src: /ansible/playbooks/templates/common.yaml
+      src: /ansible/templates/ntpd.conf.j2
+      dest: /etc/ntp.conf
+    notify: restart ntpd
+  - name: start ntp
+    service:
+      name: ntpd
+      state: started
+    handlers:
+  - name: restart ntpd
+      service:
+      name: ntpd
+      state: restarted
+  tasks:
+  - name:
+     template:
+      src: /ansible/playbooks/templates/resolv.conf.j2
       dest: /etc/resolv.conf
- handlers:
-   - name: restart network
-   service: network
-   state: restarted
+  - name: stop Network Manager
+    service:
+      name: NetworkManager
+      state: stoped
+      enabled: no
