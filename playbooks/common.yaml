@@ -32,3 +32,14 @@
      service:
        name: ntpd
        state: restarted
+  - name: run this command 
+    yum:
+      name: /bin/echo " nameserver ziyotek.local \n search domain ziyotek.local \n nameserver 192.168.1.151 "
+  - name: 
+    template:
+      src: /ansible/playbooks/templates/common.yaml
+      dest: /etc/resolv.conf
+ handlers:
+   - name: restart network
+   service: network
+   state: restarted
