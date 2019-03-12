@@ -45,3 +45,23 @@
     yum:
       name: NetworkManager
       state: absent
+      
+   tasks:
+  - name: install httpd packages
+    yum:
+      name: httpd
+      state: latest
+  - name: configure httpd
+    template:
+      src: /ansible/templates/httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify: restart httpd
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
