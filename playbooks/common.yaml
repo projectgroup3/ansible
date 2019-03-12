@@ -14,6 +14,7 @@
       - man-pages
       - mlocate
       - bind-utils
+      - ftp
 
   tasks:
   - name: install ntp packages
