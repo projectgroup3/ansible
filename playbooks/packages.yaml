@@ -14,4 +14,11 @@
       - mlocate
       - bind-utils
       - ftp
-      
+      - sysstat
+      - epel-release
+      - postfix
+      - ntp
+      - autofs
+      - nfs-utils
+      - openldap-clients
+      - nss-pam-ldapd
