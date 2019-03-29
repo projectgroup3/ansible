@@ -8,8 +8,6 @@
   tasks:
   - name: install all initial packages
     yum:
-      name: "{{ item }}"
-      state: latest
-      with_items:
+      name:
       - bind
       - bind-utils
