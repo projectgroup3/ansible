@@ -5,18 +5,6 @@
   become: yes
 
   tasks:
-  - name: install all initial packages
-    yum:
-      name: "{{ item }}"
-      state: latest
-      with_items:
-      - man
-      - man-pages
-      - mlocate
-      - bind-utils
-      - ftp
-
-  tasks:
   - name: install ntp packages
     yum:
       name: ntp
@@ -36,12 +24,4 @@
         name: ntpd
         state: restarted
 
-  tasks:
-  - name: manage resolv.conf
-    template:
-      src: /ansible/templates/resolv.conf.j2
-      dest: /etc/resolv.conf
-  - name: remove Network Manager
-    yum:
-      name: NetworkManager
-      state: absent
+ 
