@@ -8,9 +8,7 @@
   tasks:
   - name: install all initial packages
     yum:
-      name: "{{ item }}"
-      state: latest
-      with_items:
+      name:
       - httpd
       - openssl
       - mod_ssl
