@@ -11,6 +11,6 @@
       name: "{{ item }}"
       state: latest
       with_items:
-      -postfix
-      -telnet
-      -mailx
+      - postfix
+      - telnet
+      - mailx

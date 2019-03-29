@@ -11,5 +11,9 @@
       name: "{{ item }}"
       state: latest
       with_items:
-      - bind
-      - bind-utils
+      - mysql
+      - mysql-server
+      - php
+      - php-mysql
+      - phpmyadmin
+      
