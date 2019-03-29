@@ -11,6 +11,6 @@
       name: "{{ item }}"
       state: latest
       with_items:
-      -httpd
-      -openssl
-      -mod_ssl
+      - httpd
+      - openssl
+      - mod_ssl
