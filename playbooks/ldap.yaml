@@ -1,16 +1,14 @@
 ---
 -
-    name: install initial packages on all boxes
-    hosts: all
-    remote_user: ansible
-    become: yes
+  name: install initial packages on all boxes
+  hosts: all
+  remote_user: ansible
+  become: yes
 
-    tasks:
-    -name: install all initial packages
-      yum:
-        name: "{{ item }}"
-        state: latest
-        with_items:
+  tasks:
+  - name: install all initial packages
+    yum:
+      name:
         - openldap
         - openldap-clients
         - openldap-servers
