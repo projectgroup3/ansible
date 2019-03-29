@@ -1,3 +1,5 @@
+---
+-
  name: install initial packages on all boxes
   hosts: all
   remote_user: ansible

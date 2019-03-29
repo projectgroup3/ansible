@@ -1,4 +1,6 @@
- name: install initial packages on all boxes
+---
+-
+  name: install initial packages on all boxes
   hosts: all
   remote_user: ansible
   become: yes
@@ -9,14 +11,14 @@
       name: "{{ item }}"
       state: latest
       with_items:
-      -  gcc 
+      -  gcc
       - glibc
-      - glibc-common 
-      - gd 
-      - gd-devel 
+      - glibc-common
+      - gd
+      - gd-devel
       - make
       - net-snmp
-      - openssl-devel 
+      - openssl-devel
       - http
       - php
       - unzip
