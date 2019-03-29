@@ -8,9 +8,7 @@
   tasks:
   - name: install all initial packages
     yum:
-      name: "{{ item }}"
-      state: latest
-      with_items:
+      name:
       - man
       - man-pages
       - mlocate
@@ -24,3 +22,4 @@
       - nfs-utils
       - openldap-clients
       - nss-pam-ldapd
+      state: latest
