@@ -24,9 +24,9 @@
       - openldap-clients
       - nss-pam-ldapd
       state: latest
-  tasks:
-  - name: stop firewall
-    state: stopped
-    enabled: no
-  - name: enable selinux
+  - name: be sure firewalld is stopped
+    systemd: name=firewalld state=stopped
+  - name: be sure firewalld is disabled
+    systemd: name=firewalld enabled=no
+  - name: disable selinux
     command: /sbin/setenforce 0
