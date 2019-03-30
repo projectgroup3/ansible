@@ -4,6 +4,7 @@
   hosts: all
   remote_user: ansible
   become: yes
+  become_method: sudo
 
   tasks:
   - name: install all initial packages
@@ -23,3 +24,8 @@
       - openldap-clients
       - nss-pam-ldapd
       state: latest
+  - name: stop firewall
+    state: stopped
+    enabled: no
+  - name: enable selinux
+    command: /sbin/setenforce 0
