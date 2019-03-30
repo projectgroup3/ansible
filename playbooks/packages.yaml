@@ -24,6 +24,7 @@
       - openldap-clients
       - nss-pam-ldapd
       state: latest
+  tasks:
   - name: stop firewall
     state: stopped
     enabled: no
